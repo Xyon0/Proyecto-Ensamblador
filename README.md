@@ -4,7 +4,7 @@
  </p>
 Actividad en grupo <br>
 Miebros del grupo: <br> 
-Antonio Martinez Morales<br>
+Luis Antonio Martinez Morales<br>
 Daniel Alberto Gil Martinez <br>
 Josué Muñoz Camacho <br>
 Ivon Alejandra Gonzalez Avendaño <br>
