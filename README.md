@@ -3,7 +3,7 @@
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
  </p>
 Actividad en grupo <br>
-Miebros del grupo:
+Miebros del grupo: <br>
 Daniel Alberto <br>
 Josue <br>
 Antonio <br>
