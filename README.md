@@ -1,9 +1,6 @@
 <h1 align = "center" > <em> Programacion en ensamblador </em> </h1>
  <p align="left">
-   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
-   </p>
-<p>
-  ![Versiones_del_programa](https://img.shields.io/github/issues/Xyon0/Proyecto-Ensamblador.git)
+   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">, <img src="https://img.shields.io/badge/Version-EN%20-1.0ed">
  </p>
 Actividad en grupo <br>
 Miebros del grupo:
