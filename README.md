@@ -5,7 +5,8 @@
 Actividad en grupo <br>
 Miebros del grupo: <br>
 Daniel Alberto <br>
-Josue <br>
-Antonio <br>
-Ivon <br>
+Josué Muñoz Camacho <br>
+Antonio Martinez Morales<br>
+Ivon Alejandra Gonzalez Avendaño <br>
 Acosta Lopez Eduardo <br>
+Nadia Fernanda Barradas Solis <br>
