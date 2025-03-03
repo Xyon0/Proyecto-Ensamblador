@@ -1,4 +1,4 @@
-<em> Programacion en ensamblador </em>
+<h1 align = "center" > <em> Programacion en ensamblador </em> </h1>
 Actividad en grupo 
 Miebros del grupo:
 Daniel Alberto
