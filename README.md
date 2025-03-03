@@ -1,5 +1,5 @@
 <h1 align = "center" > <em> PROGRAMACIÓN EN ENSAMBLADOR </em> </h1>
- <p align="left">
+ <p align="center">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-209, 197, 0 "> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Xyon0/Proyecto-Ensamblador">
  </p>
 Actividad en grupo <br>
