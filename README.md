@@ -2,7 +2,7 @@
  <p align="left">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
  </p>
-Actividad en grupo <br> #br es dar un espacio entre lineas.
+Actividad en grupo <br>
 Miebros del grupo: <br> 
 Daniel Alberto Gil Martinez <br>
 Josué Muñoz Camacho <br>
