@@ -11,3 +11,7 @@ Nombre: print
 Descripción: permite mostrar información en la pantalla, como texto, números o resultados.
 Sintaxis: print('texto') o print (variables)
 Ejemplo simple: print("suma:", suma) #se imprime en la consola la palabra "suma" y ":" seguido se imprime el valor de suma la coma sirve para separar el texto y las variables ya definidas
+
+<h1 align = "center"> Funciones de Ejemplo 2 </h1>
+
+<h1 align = "center"> Funciones de Ejemplo 3 </h1>
