@@ -3,7 +3,7 @@
 #03/marzo/2025
 
 
-frutas = ["manzana", "plátano", "naranja"]
+frutas = ["manzana", "plátano", "naranja"] #Se trata de imprimir las palabras, manzana, platano y naranja
 
 
 frutas.append("pera")
