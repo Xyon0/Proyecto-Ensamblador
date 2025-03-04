@@ -1,6 +1,6 @@
 #team losnadios
 # Este código imprime el nombre de 3 frutas (manzana, platano y naranja) agregando tambien la pera.
-# 2025 / 03/ 03 - V. 1. 0. 0 - SE AGREGAN COMENTARIOS Y ECANBEZADO AL CÓDIGO
+# 2025 / 03/ 03 - V. 1. 0. 0 - SE  AGREGO EL ECANBEZADO AL CÓDIGO E INFORMACIÓN DEL EQUIPO   
 # 2025 / 03/ 03 - V. 1. 0. 2 - SE AGREGARON COMENTARIOS LA VARIABLE "frutas" Y EN LOS COMANDOS PRINT
 # 2025 / 03/ 03 - V. 1. 0. 3 - SE AGREGAN COMENTARIO EN LA LINEA 9, EXPLICANDO EL FUNCIONAMIENTO DEL .append
 # TRABAJARON: Daniel Alberto y Josué
@@ -14,6 +14,5 @@ frutas.append("pera") #Se usa la variable llamada "frutas", junto con el metodo 
 print("Lista de frutas:", frutas) #Se llama a imprimir una palanbra siendo "Lista de frutas" para despues usar las variables de "frutas" y finalizando con el elemento del metodo .append.
 
 
-for fruta in frutas:
+for fruta in frutas: #Se crea un bucle llamado "fruta" el cual usa los elementos de la variable "frutas" mientras va aumenta de 1 en 1 su valor, asi usando el elemento "manzana" despues "plátano" y asi sucesivamente
     print("Tengo una", fruta) #Se llama a imprimir la palabar "Tengo una" junto con el primer elemento de la variable "frutas" sucesivamente hasta que acaba la lista con el elemeneto del metodo .append
-
