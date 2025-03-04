@@ -1,6 +1,7 @@
-# Hola esto es una prueba
-
-# Hola esto lo estoy escribiendo desde mi PC
+# losnadios
+# Este código define seis variables, dos son ocupadas como datos y cuatro como resultados de operaciones simples para después imprimirse en la consola por medio de print
+# 2025/03/03 - V.1.0.0 se agregan comentarios y encabezado al código
+#TRABAJARON: Luis y Alejandra
 #todas la variables se estan definiendo, aparentemente  python no requiere que se especifique el tipo de dato que se va a ingresar
 numero1 = 5 #se define numero1 con el valor de 5
 numero2 = 3 #se define numero2 con el valor de 3
