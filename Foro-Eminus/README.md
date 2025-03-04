@@ -7,9 +7,9 @@ Para detalles sobre el contenido se debe leer la información publicada en EMINU
 
 
 <h1 align = "center"> Funciones de Ejemplo 1 </h1>
-Nombre: print
-Descripción: permite mostrar información en la pantalla, como texto, números o resultados.
-Sintaxis: print('texto') o print (variables)
+Nombre: print <br>
+Descripción: permite mostrar información en la pantalla, como texto, números o resultados. <br>
+Sintaxis: print('texto') o print (variables) <br>
 Ejemplo simple: print("suma:", suma) #se imprime en la consola la palabra "suma" y ":" seguido se imprime el valor de suma la coma sirve para separar el texto y las variables ya definidas
 
 <h1 align = "center"> Funciones de Ejemplo 2 </h1>
