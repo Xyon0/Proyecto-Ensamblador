@@ -6,7 +6,7 @@ Este repositorio sirve de complemento para realizar las actividades del curso Pr
 Para detalles sobre el contenido se debe leer la información publicada en EMINUS
 
 
-<h1 aligt = "center"> Funciones de Ejemplo 1 </h1>
+<h1 alig = "center"> Funciones de Ejemplo 1 </h1>
 Nombre: print
 Descripción: permite mostrar información en la pantalla, como texto, números o resultados.
 Sintaxis: print('texto') o print (variables)
