@@ -16,6 +16,6 @@ Ejemplo simple: print("suma:", suma) #se imprime en la consola la palabra "suma"
 Nombre: append <br>
 Descripción: Nos permite agregar a la lista una palabra, numeros, etc. <br>
 Sintaxis: .append ('texto') <br>
-Ejemplo simple: .append ("uvas") #se agrega la palabra "uvas" a una lista de palabras, numeros o elementos que se usarán en el codigo. <br>
+Ejemplo simple: .append ("uvas") #se agrega la palabra "uvas" a una lista de palabras, numeros o elementos que se usarán en el codigo.
 
 <h1 align = "center"> Funciones de Ejemplo 3 </h1>
