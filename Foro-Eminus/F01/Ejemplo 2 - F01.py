@@ -3,6 +3,7 @@
 # 2025 / 03/ 03 - V. 1. 0. 0 - SE  AGREGO EL ECANBEZADO AL CÓDIGO E INFORMACIÓN DEL EQUIPO   
 # 2025 / 03/ 03 - V. 1. 0. 2 - SE AGREGARON COMENTARIOS LA VARIABLE "frutas" Y EN LOS COMANDOS PRINT
 # 2025 / 03/ 03 - V. 1. 0. 3 - SE AGREGAN COMENTARIO EN LA LINEA 9, EXPLICANDO EL FUNCIONAMIENTO DEL .append
+# 2025 / 03/ 03 - V. 1. 0. 4 - SE AGREGO COMENTARIO EN LA LINEA 18 EXPLICANDO EL FUNCIONAMENTO DE FOR
 # TRABAJARON: Daniel Alberto y Josué
 
 frutas = ["manzana", "plátano", "naranja"] #Se crea una variable llamada "frutas" en la cual contiene elementos que referencian 3 frutas que se utilizaran en el codigo.
