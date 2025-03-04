@@ -9,7 +9,7 @@ frutas = ["manzana", "plátano", "naranja"] #Se crea una variable llamada "fruta
 frutas.append("pera")
 
 
-print("Lista de frutas:", frutas) #
+print("Lista de frutas:", frutas) #Se llama a imprimir una palanbra siendo "Lista de frutas" para despues usar las variables de "frutas" y finalizando con el elemento del metodo .append.
 
 
 for fruta in frutas:
