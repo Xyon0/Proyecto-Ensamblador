@@ -13,4 +13,5 @@ print("Lista de frutas:", frutas) #Se llama a imprimir una palanbra siendo "List
 
 
 for fruta in frutas:
-    print("Tengo una", fruta)
+    print("Tengo una", fruta) #Se llama a imprimir la palabar "Tengo una" junto con el primer elemento de la variable "frutas" sucesivamente hasta que acaba la lista con el elemeneto del metodo .append
+
