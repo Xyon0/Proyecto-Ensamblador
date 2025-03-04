@@ -1,7 +1,7 @@
 #team losnadios
 # Este código imprime el nombre de 3 frutas (manzana, platano y naranja) agregando tambien la pera.
 # 2025 / 03/ 03 - V. 1. 0. 0 - SE AGREGAN COMENTARIOS Y ECANBEZADO AL CÓDIGO
-# 2025 /
+# 2025 / 03/ 03 - V. 1. 0. 2 - SE AGREGARON COMENTARIOS LA VARIABLE "frutas" Y EN LOS COMANDOS PRINT
 # 2025 / 03/ 03 - V. 1. 0. 3 - SE AGREGAN COMENTARIO EN LA LINEA 9, EXPLICANDO EL FUNCIONAMIENTO DEL .append
 # TRABAJARON: Daniel Alberto y Josué
 
