@@ -1,5 +1,5 @@
 #team losnadios
-# Este código imprime el nombre de 3 frutas (manzana, platano y naranja) agregando tambien la pera.
+# Este código imprime los elemetos de la variable "frutas" (manzana, platano y naranja) agregando tambien el metodo .append (pera) al final haciendo lista primero, para despues imprimir otra vez los elementos pero esta vez en una lista vertical haciendo referencia que frutas tiene en ese momento.
 # 2025 / 03/ 03 - V. 1. 0. 0 - SE  AGREGO EL ECANBEZADO AL CÓDIGO E INFORMACIÓN DEL EQUIPO   
 # 2025 / 03/ 03 - V. 1. 0. 2 - SE AGREGARON COMENTARIOS LA VARIABLE "frutas" Y EN LOS COMANDOS PRINT
 # 2025 / 03/ 03 - V. 1. 0. 3 - SE AGREGAN COMENTARIO EN LA LINEA 9, EXPLICANDO EL FUNCIONAMIENTO DEL .append
