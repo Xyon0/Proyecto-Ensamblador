@@ -6,7 +6,7 @@
 frutas = ["manzana", "plátano", "naranja"] #Se crea una variable llamada "frutas" en la cual contiene elementos que referencian 3 frutas que se utilizaran en el codigo.
 
 
-frutas.append("pera")
+frutas.append("pera") #Se crea la variable "frutas" y se agrega la funcion .append con la palabra pera, para agregar dicha palabra al final de la lista de frutas.
 
 
 print("Lista de frutas:", frutas) #Se llama a imprimir una palanbra siendo "Lista de frutas" para despues usar las variables de "frutas" y finalizando con el elemento del metodo .append.
