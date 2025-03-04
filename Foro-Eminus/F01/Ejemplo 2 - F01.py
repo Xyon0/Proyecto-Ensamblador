@@ -1,6 +1,8 @@
 #TEAM LOSNADIOS
-#Este codigo fue realizado por Daniel Alberto y Josué, en el se muestra la lista que "deben" de aparecer de las frutas al momento de imprimirse agregando a la pera.
-#03/marzo/2025
+# Este código imprime el nombre de 3 frutas (manzana, platano y naranja) agregando tambien la pera.
+# 2025 / 03/ 03 - V. 1. 0. 0 - SE AGREGAN COMENTARIOS Y ECANBEZADO AL CÓDIGO
+
+# TRABAJARON: Alejandra y Luis
 
 
 frutas = ["manzana", "plátano", "naranja"] #Se trata de imprimir las palabras, manzana, platano y naranja
