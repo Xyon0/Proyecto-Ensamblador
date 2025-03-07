@@ -1,3 +1,10 @@
+#en esta segunda actualizacion logre hacer la funcion sin embargo no se borraban bien ademas de que aparecian cosas extrañas en la pantalla
+
+
+
+
+
+
 ; Example 1.1:
 ; Writes "Hello World!" to the text display
 
