@@ -1,3 +1,8 @@
+#en esta tercera prueba finalice la funcion del delay, en si lo que logre es la escritura en uno de los arreglos que aun tenia disponibles, ademas de que sobreescribi los datos 
+#los intercambie por datos vacios, es decir ceros, que no ocupan espacio pero logran borrar las letras que ya estaban en la pantalla
+
+
+
 ; Example 1.1:
 ; Writes "Hello World!" to the text display
 
