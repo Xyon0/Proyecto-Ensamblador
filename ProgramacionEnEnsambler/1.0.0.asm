@@ -1,3 +1,11 @@
+#para este primer vistazo alcance a agregar las dos lineas y ver donde se guardaban los datos ademas de donde lograr agregar las funciones necesarias 
+
+
+
+
+
+
+
 ; Example 1.1:
 ; Writes "Hello World!" to the text display
 
