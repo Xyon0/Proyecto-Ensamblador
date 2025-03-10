@@ -1,3 +1,7 @@
+ #Esta es la ultima version del delay, el tiempo que tarde en borrarse el texto es deacuerdo al tamaño del arreglo llamado time, sinembargo tiene un espacio limitado que depende del numero de datos que pueda guardar un arreglo
+
+
+
 ; Example 1.1:
 ; Writes "Hello World!" to the text display
 
