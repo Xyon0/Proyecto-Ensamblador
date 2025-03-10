@@ -1,3 +1,6 @@
+#este programa mueve un pixel o bit de informacion exadecimal que contiene el codigo de color sobre la primera fila de la pantalla, sin embargo no logre agregar la funcion de delay creada 
+
+
 ; Example 1.2:
 ; Prints a 16x16 sprite into the visual display
 
