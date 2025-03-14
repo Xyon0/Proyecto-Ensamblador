@@ -29,7 +29,7 @@ Inicio:
 	CALL print		;Funcion para mandar a impimir al display
 	JMP Conta	;Salta a Conta
 print:	
-    MOV B, 0	;Sobrescribe el valor B a 0
+	MOV B, 0	;Sobrescribe el valor B a 0
 Aparicion:	;Loop para imprimir la palabra en el display
 	MOVB AL, [C]	;Obtiene la letra
 	MOVB [D], AL	;Escribe la letra
@@ -41,7 +41,7 @@ Aparicion:	;Loop para imprimir la palabra en el display
     
 Conta:
 	MOV C, Contador	;Obtiene el texto del contador
-    CALL Tiempo	;Llama a Tiempo
+	CALL Tiempo	;Llama a Tiempo
 	JMP Erase	;Salta a Erase
 Tiempo:
 	MOV B, 0	;Sobrescribe el valor B a 0
