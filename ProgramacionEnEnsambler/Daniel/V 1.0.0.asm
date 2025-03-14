@@ -1,5 +1,5 @@
 ;Version 1.0.0
-JMP Inicio
+JMP Inicio	;Funcion para saltar a Inicio
 
 ;Posicion de la pantalla y el stackPoint
 stackTop EQU 0xFF	;Ubicacion del stackPoint
@@ -7,30 +7,27 @@ textDisplay EQU 0x2E0	;Ubicacion del display
 
 ;Variables 
 Text: 	DB " Primer version   de assembler"	;Texto a imprimir en el display
-		DB 0
-       
+		DB 0	;Termina la cadena
 ;Codigo de Inicio
 Inicio:
 	MOV SP, stackTop		; Funcion del punto de stack
     MOV C, Text		; Funcion para obtener el texto a poner en el display
     MOV D, textDisplay	;Funcion para obtener las cordenadas del display
     CALL print		;Funcion para mandar a impimir al display
-    HLT
+    HLT		;Funcion para parar el simulador y no siga en loop
     
-print:
-	PUSH A
-    PUSH B
-    MOV B, 0
-Aparicion:
-	MOVB AL, [C]
-    MOVB [D], AL
-    INC C
-    INC D
-    CMPB BL, [C]
-    JNZ Aparicion
+print:	
+	PUSH A	;Apila el valor de A en la parte superior
+    PUSH B	;Apila el valor de B encima del valor A
+    MOV B, 0	;Sobrescribe el valor B a 0
+Aparicion:	;Loop para imprimir la palabra en el display
+	MOVB AL, [C]	;Obtiene la letra
+    MOVB [D], AL	;Escribe la letra
+    INC C	;Incrementa el valor en C
+    INC D	;Incrementa el valor en D
+    CMPB BL, [C]	;Revisa si el texto es igual a 0
+    JNZ Aparicion	;Regresa a Inicio
     
-    POP B
-    POP A
-    RET
-
-    
+    POP B	;Saca el valor de la pila que esta en la parte superior de la pila y lo almacena en B
+    POP A	;Saca el siguente valor de la parte superior de la pila y lo almacena en A
+    RET	;Regresa a la funcion CALL
