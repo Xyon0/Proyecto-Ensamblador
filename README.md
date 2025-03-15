@@ -10,6 +10,9 @@
   <p>
    Reposiorio hecho para la actividad de Programacion avanzada, acerca de crear un programa en el <a href = "https://parraman.github.io/asm-simulator/"> <em> simulador de ensambaldor </em> </a> asignado por el profesor, siendo este la creacion de una animacion simple en el display y a si mismo un texto usando ambas lineas del display de 16x2 para que despues el texto desaparezca.
   </p>
+  <p>
+   Se realizaron diferentes versiones de cada participante siendo estas las carpetas con diferentes nombres creadas dentro de "ProgramacionEnEnsambler", sin embargo se realizo tambien un ejercicio general llamado "general.asm" que combina todo el conocimiento que se obtuvo de los diferentes integrantes en el equipo.
+  </p>
 </section>
 
 <sectoion>
