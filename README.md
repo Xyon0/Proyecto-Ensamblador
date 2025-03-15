@@ -8,7 +8,7 @@
 <section>
  <h2> Actividad en grupo </h2>
   <p>
-   Reposiorio hecho para la activadad de Programacion avanzada, acerca de crear un programa en el <a href = "https://parraman.github.io/asm-simulator/"> <em> simulador de ensambaldor </em> </a> asignado por el profesor, siendo este la creacion de una animacion simple en el display y a si mismo un texto usando ambas lineas del display de 16x2 para que despues el texto desaparezca.
+   Reposiorio hecho para la actividad de Programacion avanzada, acerca de crear un programa en el <a href = "https://parraman.github.io/asm-simulator/"> <em> simulador de ensambaldor </em> </a> asignado por el profesor, siendo este la creacion de una animacion simple en el display y a si mismo un texto usando ambas lineas del display de 16x2 para que despues el texto desaparezca.
   </p>
 </section>
 
