@@ -1,24 +1,24 @@
-#; Versión 1.0
+; Versión 1.0
 JMP Inicio
-stackTop EQU 0xFF	#; Ubicación del stackPoint
-textDisplay EQU 0x2E0	#; Ubicación del display
+stackTop EQU 0xFF	; Ubicación del stackPoint
+textDisplay EQU 0x2E0	; Ubicación del display
 
-Text: DB " 1ra version del codigo           ", #; Texto a imprimir en el display
+Text: DB " 1ra version del codigo           ", ; Texto a imprimir en el display
 
 Inicio:
-	MOV SP, stackTop	#; Inicializa el stackpointer
-	MOV C, Text		#; Carga la dirección del texto
-	MOV D, textDisplay	#
+	MOV SP, stackTop	; Inicializa el stackpointer
+	MOV C, Text		; Carga la dirección del texto
+	MOV D, textDisplay	
 	CALL print		
-	HLT			#; Detiene el simulador
+	HLT			; Detiene el simulador
 
 print:	
-    MOV B,0		#; Inicializa B en 0
-Aparicion:		#; Bucle para imprimir el texto
-	MOVB AL, [C]	#; Obtiene el byte actual del texto
-	MOVB [D], AL	#; Escribe el byte en el display
-	INC C		#; Avanza al siguiente byte del texto
-	INC D		#; Avanza al siguiente byte del display
-  CMPB AL,	0#; Compara con el terminador de cadena (0)
+    MOV B,0		; Inicializa B en 0
+Aparicion:		; Bucle para imprimir el texto
+	MOVB AL, [C]	; Obtiene el byte actual del texto
+	MOVB [D], AL	; Escribe el byte en el display
+	INC C		; Avanza al siguiente byte del texto
+	INC D		; Avanza al siguiente byte del display
+  CMPB AL,	0 ; Compara con el terminador de cadena (0)
   JNZ Aparicion
-	RET		#; Retorna de la función
+	RET		; Retorna de la función
