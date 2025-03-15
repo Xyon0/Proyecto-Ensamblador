@@ -1,9 +1,9 @@
-;este codigo logra mover un pixel a traves de la primera fila de la pantalla infinitamente como un gif  
+;este codigo logra mover un pixel a traves de la primera fila de la pantalla infinitamente como un gif, a diferencia de la primera version con ayuda de una instruccion es capas de repetirse infinitamente
 
 
 	
 
-	JMP boot
+JMP boot
 
 vslDisplay EQU 0x300 ;se le da a vslDisplay el valor de 0x300
 
@@ -34,14 +34,14 @@ boot:
 	CMP D, 0x30F		; se compara el valor de D con 0x30F  
     
 	JNZ .loop               ; si son iguales si finaliza la subrutina
-    DEC D 
-    MOVB [D], 0xFF	
-    MOV C, sprite		;  
-	MOV D, vslDisplay	; 
+    DEC D 			; se disminuye en uno el valor de D para que no aparezca otra vez el pixel anterior 
+    MOVB [D], 0xFF	        ; la posicion que D representa en la pantalla se define como un pixel blanco 
+    MOV C, sprite		; se le da a C el valor que sprite tenga 
+    MOV D, vslDisplay	        ; se le da a D el valor de vlsDisplay que es una posicion 
 		
-    JMP .loop
+    JMP .loop                   ; se regresa a .loop infinitamente 
     
-	;HLT			;finaliza la subrutina 
+	;HLT			;el HLT se elimina para no afectar el bucle infinito 
     
     
     
