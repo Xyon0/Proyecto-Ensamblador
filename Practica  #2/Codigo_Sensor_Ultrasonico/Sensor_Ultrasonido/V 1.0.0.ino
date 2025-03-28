@@ -17,9 +17,9 @@ void loop() {
   delayMicroseconds(10);        // Mantenemos el pulso alto durante 10 microsegundos
   digitalWrite(trigPin, LOW);  // Apagamos el pulso en el pin de disparo
 
-  duration = pulseIn(echoPin, HIGH); // Medimos la duración del pulso de eco que regresa al pin de eco
-  distance = (duration * 0.0343) / 2; // Calculamos la distancia en centímetros (velocidad del sonido en cm/us, dividido por 2 para el viaje de ida y vuelta)
-  Serial.print("Distance: "); // Imprimimos el texto "Distance: " en el monitor serie
-  Serial.println(distance);    // Imprimimos la distancia calculada en el monitor serie
+  duracion = pulseIn(echoPin, HIGH); // Medimos la duración del pulso de eco que regresa al pin de eco
+  distancio = (duration * 0.0343) / 2; // Calculamos la distancia en centímetros (velocidad del sonido en cm/us, dividido por 2 para el viaje de ida y vuelta)
+  Serial.print("Distancia: "); // Imprimimos el texto "Distancia: " en el monitor serie
+  Serial.println(distancia);    // Imprimimos la distancia calculada en el monitor serie
   delay(100);                 // Esperamos 100 milisegundos antes de repetir el ciclo
 }
