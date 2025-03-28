@@ -15,6 +15,16 @@
   </p>
 </section>
 
+<section>
+ <h2>
+  Practica #2
+  <p>
+   Aquí puede encontrar la Actividad 2 que dejo en eminus, acerca del funcionnamiento de sensores y sus datos.<br>
+   Se realizaron diferntes codigos dependiendo del sensores para despues unirlo todo en un archivo llamado "General.ino" y "general.py".
+  </p>
+ </h2>
+</section>
+
 <sectoion>
  <h2> Miebros del grupo:</h2>
  <ul>
