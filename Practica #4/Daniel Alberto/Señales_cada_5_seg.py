@@ -1,4 +1,4 @@
-#Version 1.1.2
+#Version 2.0.0
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -7,28 +7,31 @@ temperatura = pd.read_csv('temperatura.csv', sep= ",", decimal= ".")
 humedad = pd.read_csv('humedad.csv', sep= ",", decimal= ".")
 viento = pd.read_csv('viento.csv', sep= ",", decimal= ".")
 
+def tiempo (df):
+    return df.index * 5
+
 plt.figure(figsize=(10, 8))
 
 plt.subplot(4,1,1)
-plt.plot(temperatura["Tiempo"],temperatura["Temperatura_C"] , color = "orange")
+plt.plot(tiempo(temperatura),temperatura["Temperatura_C"] , color = "orange")
 plt.title("Señal original - Temperatura")
 plt.ylabel("Temperatura - Centigrados")
 plt.grid()
 
 plt.subplot(4,1,2)
-plt.plot(humedad["Tiempo"], humedad ["Humedad_Relativa_%"], color = "green")
+plt.plot(tiempo(humedad), humedad ["Humedad_Relativa_%"], color = "green")
 plt.title("Señal original - Humedad")
 plt.ylabel("Humedad - Relativa")
 plt.grid()
 
 plt.subplot(4,1,3)
-plt.plot(viento["Tiempo"], viento["Velocidad_Viento_mps"])
+plt.plot(tiempo(viento), viento["Velocidad_Viento_mps"])
 plt.title("Señal original - Viento")
 plt.ylabel("Velacidad - Mps")
 plt.grid()
 
 plt.subplot(4,1,4)
-plt.plot(viento["Direccion_Viento_deg"], color = "grey")
+plt.plot(tiempo(viento), viento["Direccion_Viento_deg"], color = "grey")
 plt.title("Señal original - Viento")
 plt.ylabel("Dirección - DEG")
 plt.grid()
