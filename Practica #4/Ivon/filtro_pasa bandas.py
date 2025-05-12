@@ -1,4 +1,6 @@
 #parte 4 del código
+import pandas as pd
+import matplotlib.pyplot as plt
 from scipy.signal import butter, filtfilt
 
 def aplicar_filtro_pasabandas(senal, fs, f_low, f_high, orden=4):
