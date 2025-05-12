@@ -1,64 +1,55 @@
 #parte 4 del código
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.signal import butter, filtfilt
+import numpy as np
+from scipy import signal
 
+# Configuración de estilo para las gráficas
+plt.style.use('ggplot')
+plt.rcParams['figure.figsize'] = (10, 6)
 
-# Cargar los archivos CSV
-temperatura = pd.read_csv('temperatura.csv', sep=",", decimal=".")
-humedad = pd.read_csv('humedad.csv', sep=",", decimal=".")
-viento = pd.read_csv('viento.csv', sep=",", decimal=".")
-
-def aplicar_filtro_pasabandas(senal, fs, f_low, f_high, orden=4):
+def aplicar_filtro_pasa_bandas(datos, fs, lowcut_hz=0.1, highcut_hz=0.3):
+    """Aplica un filtro pasa bandas con frecuencias en Hz"""
     nyquist = 0.5 * fs
-    low = f_low / nyquist
-    high = f_high / nyquist
-    b, a = butter(orden, [low, high], btype='band')
-    return filtfilt(b, a, senal)
+    low = lowcut_hz / nyquist
+    high = highcut_hz / nyquist
+    b, a = signal.butter(4, [low, high], btype='band')
+    return signal.filtfilt(b, a, datos)
 
-# Asumiendo que las muestras se toman cada 5 segundos => fs = 1/5 Hz
-fs = 1 / 5  
+def cargar_y_procesar_csv(archivo_csv, fs):
+    """Carga un archivo CSV y devuelve los datos originales y filtrados"""
+    df = pd.read_csv(archivo_csv)
+    tiempo = df.iloc[:, 0].values
+    datos_originales = df.iloc[:, 1].values
+    
+    # Aplicar filtro pasa bandas
+    datos_filtrados = aplicar_filtro_pasa_bandas(datos_originales, fs=fs)
+    
+    return tiempo, datos_originales, datos_filtrados
 
-# Filtro pasa bandas entre 0.01 y 0.08 Hz
-temperatura["Filtro_PBAND"] = aplicar_filtro_pasabandas(temperatura["Temperatura_C"], fs, 0.01, 0.08)
-humedad["Filtro_PBAND"] = aplicar_filtro_pasabandas(humedad["Humedad_Relativa_%"], fs, 0.01, 0.08)
-viento["Filt_Vel_PBAND"] = aplicar_filtro_pasabandas(viento["Velocidad_Viento_mps"], fs, 0.01, 0.08)
-viento["Filt_Dir_PBAND"] = aplicar_filtro_pasabandas(viento["Direccion_Viento_deg"], fs, 0.01, 0.08)
-plt.figure(figsize=(12, 16))
+def crear_grafica(tiempo, original, filtrado, titulo):
+    """Crea una gráfica con datos originales y filtrados"""
+    plt.figure()
+    plt.plot(tiempo, original, 'b-', label='Datos originales', alpha=0.7)
+    plt.plot(tiempo, filtrado, 'r-', label='Filtro pasa bandas (0.1-0.3 Hz)', linewidth=1.5)
+    plt.title(titulo)
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Amplitud')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
 
-plt.subplot(4,1,1)
-plt.plot(tiempo(temperatura), temperatura["Temperatura_C"], label="Original", **estilo['original'])
-plt.plot(tiempo(temperatura), temperatura["Filtro_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
-plt.title("Temperatura - Filtro Pasa Bandas")
-plt.ylabel("°C")
-plt.grid()
-plt.legend()
+# Archivos CSV a leer (cambiar por tus rutas reales)
+archivos_csv = ['temperatura.csv', 'humedad.csv', 'viento.csv']
 
-plt.subplot(4,1,2)
-plt.plot(tiempo(humedad), humedad["Humedad_Relativa_%"], label="Original", **estilo['original'])
-plt.plot(tiempo(humedad), humedad["Filtro_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
-plt.title("Humedad - Filtro Pasa Bandas")
-plt.ylabel("%")
-plt.grid()
-plt.legend()
+# Frecuencia de muestreo (¡IMPORTANTE! ajusta este valor según tus datos)
+fs = 10  # Ejemplo: 10 Hz (muestras por segundo)
 
-plt.subplot(4,1,3)
-plt.plot(tiempo(viento), viento["Velocidad_Viento_mps"], label="Original", **estilo['original'])
-plt.plot(tiempo(viento), viento["Filt_Vel_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
-plt.title("Velocidad Viento - Filtro Pasa Bandas")
-plt.ylabel("m/s")
-plt.grid()
-plt.legend()
-
-plt.subplot(4,1,4)
-plt.plot(tiempo(viento), viento["Direccion_Viento_deg"], label="Original", **estilo['original'])
-plt.plot(tiempo(viento), viento["Filt_Dir_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
-plt.title("Dirección Viento - Filtro Pasa Bandas")
-plt.xlabel("Tiempo (s)")
-plt.ylabel("°")
-plt.grid()
-plt.legend()
-
-plt.tight_layout()
-plt.show()
-
+# Procesar cada archivo CSV y crear una gráfica individual
+for archivo in archivos_csv:
+    try:
+        tiempo, original, filtrado = cargar_y_procesar_csv(archivo, fs)
+        crear_grafica(tiempo, original, filtrado, f'Comparación: {archivo} (fs={fs} Hz)')
+    except Exception as e:
+        print(f'Error procesando {archivo}: {str(e)}')
