@@ -15,42 +15,6 @@ humedad["Promediado_movil"] = humedad["Humedad_Relativa_%"].rolling(3, center=Tr
 viento["PM_Velocidad"] = viento["Velocidad_Viento_mps"].rolling(3, center=True).mean()
 viento["PM_Direccion"] = viento["Direccion_Viento_deg"].rolling(3, center=True).mean()
 
-plt.figure(figsize=(10, 12))
-
-plt.subplot(4,1,1)
-plt.plot(tiempo(temperatura), temperatura["Temperatura_C"], color="orange", label="Original")
-plt.plot(tiempo(temperatura), temperatura["Promediado_movil"], color="blue", linestyle="--", label="Prom. Móvil (V=3)")
-plt.title("Temperatura - Promediado Móvil")
-plt.ylabel("Temperatura (°C)")
-plt.grid()
-plt.legend()
-
-plt.subplot(4,1,2)
-plt.plot(tiempo(humedad), humedad["Humedad_Relativa_%"], color="green", label="Original")
-plt.plot(tiempo(humedad), humedad["Promediado_movil"], color="red", linestyle="--", label="Prom. Móvil (V=3)")
-plt.title("Humedad - Promediado Móvil")
-plt.ylabel("Humedad (%)")
-plt.grid()
-plt.legend()
-
-plt.subplot(4,1,3)
-plt.plot(tiempo(viento), viento["Velocidad_Viento_mps"], label="Original")
-plt.plot(tiempo(viento), viento["PM_Velocidad"], color="orange", linestyle="--", label="Prom. Móvil (V=3)")
-plt.title("Velocidad Viento - Promediado Móvil")
-plt.ylabel("Velocidad (m/s)")
-plt.grid()
-plt.legend()
-
-plt.subplot(4,1,4)
-plt.plot(tiempo(viento), viento["Direccion_Viento_deg"], color="grey", label="Original")
-plt.plot(tiempo(viento), viento["PM_Direccion"], color="purple", linestyle="--", label="Prom. Móvil (V=3)")
-plt.title("Dirección Viento - Promediado Móvil")
-plt.ylabel("Dirección (°)")
-plt.grid()
-plt.legend()
-
-plt.tight_layout()
-plt.show()
 
 def aplicar_filtro(senal, fc=0.1, orden=4):
     b, a = butter(orden, fc, btype='low')
