@@ -1,44 +1,56 @@
 #parte 4 del código
-# Función para aplicar el filtro pasa bandas
-def apply_bandpass_filter(signal, lowcut=0.01, highcut=0.1, fs=1, order=4):
-    b, a = butter(N=order, Wn=[lowcut, highcut], btype='band')
-    return filtfilt(b, a, signal)
+from scipy.signal import butter, filtfilt
 
-# Señales originales
-viento = viento_df['Velocidad_Viento_mps'].values
-temperatura = temperatura_df['Temperatura_C'].values
-humedad = humedad_df['Humedad_Relativa_%'].values
-tiempo = viento_df['Tiempo'].values  # Asumimos que todas tienen el mismo tiempo
+def aplicar_filtro_pasabandas(senal, fs, f_low, f_high, orden=4):
+    nyquist = 0.5 * fs
+    low = f_low / nyquist
+    high = f_high / nyquist
+    b, a = butter(orden, [low, high], btype='band')
+    return filtfilt(b, a, senal)
 
-# Filtrado
-viento_filtrado = apply_bandpass_filter(viento)
-temperatura_filtrada = apply_bandpass_filter(temperatura)
-humedad_filtrada = apply_bandpass_filter(humedad)
+# Asumiendo que las muestras se toman cada 5 segundos => fs = 1/5 Hz
+fs = 1 / 5  
 
-# Graficar las tres señales
-fig, axs = plt.subplots(3, 1, figsize=(14, 12), sharex=True)
+# Filtro pasa bandas entre 0.01 y 0.08 Hz
+temperatura["Filtro_PBAND"] = aplicar_filtro_pasabandas(temperatura["Temperatura_C"], fs, 0.01, 0.08)
+humedad["Filtro_PBAND"] = aplicar_filtro_pasabandas(humedad["Humedad_Relativa_%"], fs, 0.01, 0.08)
+viento["Filt_Vel_PBAND"] = aplicar_filtro_pasabandas(viento["Velocidad_Viento_mps"], fs, 0.01, 0.08)
+viento["Filt_Dir_PBAND"] = aplicar_filtro_pasabandas(viento["Direccion_Viento_deg"], fs, 0.01, 0.08)
+plt.figure(figsize=(12, 16))
 
-axs[0].plot(tiempo, viento, label='Original', alpha=0.5)
-axs[0].plot(tiempo, viento_filtrado, label='Filtrada', linewidth=2)
-axs[0].set_title('Velocidad del Viento')
-axs[0].set_ylabel('m/s')
-axs[0].legend()
-axs[0].grid(True)
+plt.subplot(4,1,1)
+plt.plot(tiempo(temperatura), temperatura["Temperatura_C"], label="Original", **estilo['original'])
+plt.plot(tiempo(temperatura), temperatura["Filtro_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
+plt.title("Temperatura - Filtro Pasa Bandas")
+plt.ylabel("°C")
+plt.grid()
+plt.legend()
 
-axs[1].plot(tiempo, temperatura, label='Original', alpha=0.5)
-axs[1].plot(tiempo, temperatura_filtrada, label='Filtrada', linewidth=2)
-axs[1].set_title('Temperatura')
-axs[1].set_ylabel('°C')
-axs[1].legend()
-axs[1].grid(True)
+plt.subplot(4,1,2)
+plt.plot(tiempo(humedad), humedad["Humedad_Relativa_%"], label="Original", **estilo['original'])
+plt.plot(tiempo(humedad), humedad["Filtro_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
+plt.title("Humedad - Filtro Pasa Bandas")
+plt.ylabel("%")
+plt.grid()
+plt.legend()
 
-axs[2].plot(tiempo, humedad, label='Original', alpha=0.5)
-axs[2].plot(tiempo, humedad_filtrada, label='Filtrada', linewidth=2)
-axs[2].set_title('Humedad Relativa')
-axs[2].set_ylabel('%')
-axs[2].set_xlabel('Tiempo')
-axs[2].legend()
-axs[2].grid(True)
+plt.subplot(4,1,3)
+plt.plot(tiempo(viento), viento["Velocidad_Viento_mps"], label="Original", **estilo['original'])
+plt.plot(tiempo(viento), viento["Filt_Vel_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
+plt.title("Velocidad Viento - Filtro Pasa Bandas")
+plt.ylabel("m/s")
+plt.grid()
+plt.legend()
+
+plt.subplot(4,1,4)
+plt.plot(tiempo(viento), viento["Direccion_Viento_deg"], label="Original", **estilo['original'])
+plt.plot(tiempo(viento), viento["Filt_Dir_PBAND"], label="Filtro Pasa Bandas", **estilo['filtro'])
+plt.title("Dirección Viento - Filtro Pasa Bandas")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("°")
+plt.grid()
+plt.legend()
 
 plt.tight_layout()
 plt.show()
+
