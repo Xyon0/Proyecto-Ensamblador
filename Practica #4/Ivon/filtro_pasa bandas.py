@@ -3,6 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import butter, filtfilt
 
+
+# Cargar los archivos CSV
+temperatura = pd.read_csv('temperatura.csv', sep=",", decimal=".")
+humedad = pd.read_csv('humedad.csv', sep=",", decimal=".")
+viento = pd.read_csv('viento.csv', sep=",", decimal=".")
+
 def aplicar_filtro_pasabandas(senal, fs, f_low, f_high, orden=4):
     nyquist = 0.5 * fs
     low = f_low / nyquist
