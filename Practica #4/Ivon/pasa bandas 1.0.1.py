@@ -30,7 +30,7 @@ def cargar_y_procesar_csv(archivo_csv, fs):
 # Archivos CSV a leer (cambiar por tus rutas reales)
 archivos_csv = ['humedad.csv', 'temperatura.csv', 'viento.csv']
 
-# Frecuencia de muestreo (¡IMPORTANTE! ajusta este valor según tus datos)
+# Frecuencia de muestreo 
 fs = 10  # Ejemplo: 10 Hz (muestras por segundo)
 
 # Crear una sola figura
