@@ -1,0 +1,127 @@
+# SE TIENE QUE CERRAR LA VENTANA PARA CONTINUAR VIENDO LOS FILTROS
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import signal
+from scipy.fft import fft, fftfreq
+
+# Configuración de estilo para las gráficas
+plt.style.use('ggplot')
+plt.rcParams['figure.figsize'] = (12, 8)
+plt.rcParams['axes.grid'] = True
+
+def aplicar_filtro_pasa_bajas(datos, fs, cutoff_hz=0.5):
+    """Aplica un filtro pasa bajas con frecuencia de corte en Hz"""
+    nyquist = 0.5 * fs
+    normal_cutoff = cutoff_hz / nyquist
+    b, a = signal.butter(4, normal_cutoff, btype='low')
+    return signal.filtfilt(b, a, datos)
+
+def aplicar_filtro_pasa_bandas(datos, fs, lowcut_hz=0.1, highcut_hz=0.3):
+    """Aplica un filtro pasa bandas con frecuencias en Hz"""
+    nyquist = 0.5 * fs
+    low = lowcut_hz / nyquist
+    high = highcut_hz / nyquist
+    b, a = signal.butter(4, [low, high], btype='band')
+    return signal.filtfilt(b, a, datos)
+
+def calcular_fft(y, fs):
+    """Calcula la FFT y devuelve frecuencias y amplitudes normalizadas"""
+    n = len(y)
+    yf = fft(y)
+    xf = fftfreq(n, 1/fs)[:n//2]
+    return xf, 2.0/n * np.abs(yf[0:n//2])
+
+def cargar_y_procesar_csv(archivo_csv, fs):
+    """Carga un archivo CSV y devuelve los datos originales y filtrados"""
+    df = pd.read_csv(archivo_csv)
+    tiempo = df.iloc[:, 0].values
+    datos_originales = df.iloc[:, 1].values
+    
+    # Aplicar filtros
+    datos_pasa_bajas = aplicar_filtro_pasa_bajas(datos_originales, fs=fs)
+    datos_pasa_bandas = aplicar_filtro_pasa_bandas(datos_originales, fs=fs)
+    
+    return tiempo, datos_originales, datos_pasa_bajas, datos_pasa_bandas
+
+def graficar_comparacion_temporal(tiempo, original, pasa_bajas, pasa_bandas, titulo):
+    """Crea una gráfica con datos originales y filtrados en el dominio del tiempo"""
+    plt.figure()
+    plt.plot(tiempo, original, 'b-', label='Original', alpha=0.5)
+    plt.plot(tiempo, pasa_bajas, 'g-', label='Filtro pasa bajas (0.5 Hz)', linewidth=1.5)
+    plt.plot(tiempo, pasa_bandas, 'r-', label='Filtro pasa bandas (0.1-0.3 Hz)', linewidth=1.5)
+    plt.title(f'Comparación temporal: {titulo}')
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Amplitud')
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+def graficar_espectro_frecuencias(xf, original_fft, pasa_bajas_fft, pasa_bandas_fft, titulo, fs):
+    """Grafica el espectro de frecuencias para las tres señales"""
+    plt.figure()
+    plt.plot(xf, original_fft, 'b-', label='Original', alpha=0.7)
+    plt.plot(xf, pasa_bajas_fft, 'g-', label='Pasa bajas', linewidth=1.5)
+    plt.plot(xf, pasa_bandas_fft, 'r-', label='Pasa bandas', linewidth=1.5)
+    
+    # Marcamos las frecuencias de corte para referencia
+    plt.axvline(x=0.5, color='g', linestyle='--', alpha=0.3, label='Corte pasa bajas (0.5 Hz)')
+    plt.axvline(x=0.1, color='r', linestyle='--', alpha=0.3)
+    plt.axvline(x=0.3, color='r', linestyle='--', alpha=0.3, label='Corte pasa bandas (0.1-0.3 Hz)')
+    
+    plt.title(f'Espectro de frecuencias: {titulo}\n(Fs={fs} Hz)')
+    plt.xlabel('Frecuencia (Hz)')
+    plt.ylabel('Amplitud normalizada')
+    plt.xlim(0, 1)  # Limitamos a frecuencias bajas para mejor visualización
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+def analizar_ruido(xf, original_fft, pasa_bajas_fft, pasa_bandas_fft):
+    """Analiza y compara el contenido de ruido en las señales"""
+    # Definimos ruido como componentes de alta frecuencia (> 0.5 Hz)
+    mask_ruido = xf > 0.5
+    ruido_original = np.sum(original_fft[mask_ruido])
+    ruido_pasa_bajas = np.sum(pasa_bajas_fft[mask_ruido])
+    ruido_pasa_bandas = np.sum(pasa_bandas_fft[mask_ruido])
+    
+    print("\nAnálisis de ruido (componentes > 0.5 Hz):")
+    print(f"- Original: {ruido_original:.4f}")
+    print(f"- Pasa bajas: {ruido_pasa_bajas:.4f} (reducción del {100*(1-ruido_pasa_bajas/ruido_original):.1f}%)")
+    print(f"- Pasa bandas: {ruido_pasa_bandas:.4f} (reducción del {100*(1-ruido_pasa_bandas/ruido_original):.1f}%)")
+    
+    # Determinar qué filtro es más efectivo para reducir ruido
+    if ruido_pasa_bajas < ruido_pasa_bandas:
+        print("\nConclusión: El filtro pasa bajas es más efectivo para reducir ruido de alta frecuencia")
+    else:
+        print("\nConclusión: El filtro pasa bandas es más efectivo para reducir ruido de alta frecuencia")
+
+# Archivos CSV a leer (cambiar por tus rutas reales)
+archivos_csv = ['temperatura.csv', 'humedad.csv', 'viento.csv']
+
+# Frecuencia de muestreo (¡IMPORTANTE! ajusta este valor según tus datos)
+fs = 10  # Ejemplo: 10 Hz (muestras por segundo)
+
+# Procesar cada archivo CSV y realizar análisis FFT
+for archivo in archivos_csv:
+    try:
+        print(f"\nProcesando archivo: {archivo}")
+        tiempo, original, pasa_bajas, pasa_bandas = cargar_y_procesar_csv(archivo, fs)
+        
+        # Graficar en dominio del tiempo
+        graficar_comparacion_temporal(tiempo, original, pasa_bajas, pasa_bandas, archivo)
+        
+        # Calcular FFTs
+        xf, original_fft = calcular_fft(original, fs)
+        _, pasa_bajas_fft = calcular_fft(pasa_bajas, fs)
+        _, pasa_bandas_fft = calcular_fft(pasa_bandas, fs)
+        
+        # Graficar en dominio de frecuencia
+        graficar_espectro_frecuencias(xf, original_fft, pasa_bajas_fft, pasa_bandas_fft, archivo, fs)
+        
+        # Analizar y comparar ruido
+        analizar_ruido(xf, original_fft, pasa_bajas_fft, pasa_bandas_fft)
+        
+    except Exception as e:
+        print(f'Error procesando {archivo}: {str(e)}')
